@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#10121b">
+<meta name="description" content="Pli confidentiel. À n'ouvrir que par la destinataire.">
+<meta property="og:title" content="Convocation">
+<meta property="og:description" content="Pli confidentiel. À n'ouvrir que par la destinataire.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%238c1d2c'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23f2d6da' stroke-opacity='.35' stroke-width='2'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='28' fill='%23f2d6da'%3EA.%3C/text%3E%3C/svg%3E">
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+html, body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+<title>La Convocation</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=IBM+Plex+Mono:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout : une colonne étroite, comme une pièce de dossier posée sur un bureau de nuit. Papier timbré, encre bleu nuit, cire. */
+:root {
+  --night: #10121b;
+  --night-2: #191c29;
+  --line: #2c3042;
+  --on-night: #e6e7ee;
+  --mist: #9298ae;
+  --brass: #cdb27a;
+  --paper: #ebece6;
+  --paper-2: #dcded5;
+  --ink: #1b2235;
+  --ink-soft: #4b5369;
+  --rule: rgba(27, 34, 53, .16);
+  --wax: #8c1d2c;
+  --wax-hi: #b8394d;
+  --wax-lo: #5a0f1a;
+  --display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --body: "Spectral", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--night) radial-gradient(120% 60% at 50% 0%, var(--night-2), var(--night) 70%) no-repeat;
+  color: var(--on-night);
+  font: 17px/1.55 var(--body);
+  padding-block: 20px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  min-height: 100%;
+}
+body.demo { padding-bottom: 190px; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--wax-hi); outline-offset: 3px; }
+a { color: inherit; }
+
+.app { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+.ref { font: 500 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--mist); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+.rail { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.rail button {
+  background: none; border: 0; border-top: 2px solid var(--line); color: var(--mist);
+  font: 500 10.5px/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase;
+  padding: 8px 0 0; text-align: left; cursor: pointer; min-width: 0; overflow-wrap: anywhere;
+}
+.rail button b { display: block; font: italic 500 15px/1 var(--display); letter-spacing: 0; text-transform: none; margin-bottom: 3px; }
+.rail .done { border-color: var(--brass); color: var(--on-night); }
+.rail .current { border-color: var(--wax-hi); color: #fff; }
+.rail button:disabled { cursor: default; opacity: .45; }
+
+.stack { display: flex; flex-direction: column; gap: 22px; }
+.stage { display: flex; flex-direction: column; gap: 18px; align-items: stretch; }
+.eyebrow { margin: 0; font: 500 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--brass); }
+.hint { margin: 0; color: var(--mist); font-style: italic; }
+
+/* Compte à rebours */
+.cd { display: flex; flex-direction: column; gap: 8px; }
+.cd-label { font: 500 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--brass); }
+.cd-digits { display: flex; gap: clamp(12px, 4vw, 26px); }
+.cd-digits div { display: flex; flex-direction: column; gap: 2px; }
+.cd-digits b { font: 500 clamp(36px, 10vw, 56px)/1 var(--display); font-variant-numeric: tabular-nums lining-nums; color: var(--on-night); }
+.cd-digits small { font: 500 10.5px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mist); }
+.cd-open { font: italic 500 clamp(28px, 8vw, 40px)/1.1 var(--display); color: var(--on-night); margin: 0; }
+
+/* Enveloppe */
+.envelope {
+  position: relative; width: 100%; max-width: 100%; aspect-ratio: 3 / 2;
+  background: linear-gradient(160deg, var(--paper), var(--paper-2));
+  border-radius: 3px; overflow: hidden;
+  box-shadow: 0 40px 60px -30px #000, 0 0 0 1px rgba(0,0,0,.3);
+}
+.env-flap {
+  position: absolute; inset: 0 0 auto 0; height: 60%;
+  background: linear-gradient(180deg, #f3f4ef, var(--paper-2));
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.env-flap::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 96%, rgba(27,34,53,.12));
+}
+.env-addr { position: absolute; left: 7%; bottom: 9%; margin: 0; color: var(--ink); font-size: 13px; line-height: 1.35; }
+.env-addr em { font: italic 500 clamp(20px, 5.5vw, 28px)/1.1 var(--display); }
+.env-addr span { font: 500 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+.env-stamp {
+  position: absolute; right: 6%; bottom: 11%; border: 2px solid var(--wax); color: var(--wax);
+  font: 600 clamp(8px, 2.2vw, 10px)/1.2 var(--mono); letter-spacing: .14em; text-transform: uppercase;
+  padding: 6px 8px; transform: rotate(7deg); opacity: .85;
+}
+.seal-wrap { position: absolute; left: 50%; top: 60%; transform: translate(-50%, -50%); }
+.seal-wrap.inline { position: relative; left: auto; top: auto; transform: none; display: flex; justify-content: flex-start; }
+.seal {
+  position: relative; width: clamp(78px, 22vw, 104px); aspect-ratio: 1; border: 0; padding: 0;
+  background: none; cursor: pointer; border-radius: 50%;
+  animation: pulse 2.6s ease-in-out infinite;
+}
+.seal-half {
+  position: absolute; inset: 0; border-radius: 47% 53% 50% 50% / 52% 48% 52% 48%;
+  background: radial-gradient(circle at 34% 28%, var(--wax-hi), var(--wax) 52%, var(--wax-lo));
+  box-shadow: inset 0 0 0 7px rgba(0,0,0,.12), 0 8px 16px rgba(0,0,0,.45);
+  transition: transform .9s cubic-bezier(.3,.7,.2,1), opacity .9s ease;
+}
+.seal-half.l { clip-path: polygon(0 0, 53% 0, 45% 38%, 55% 62%, 47% 100%, 0 100%); }
+.seal-half.r { clip-path: polygon(53% 0, 100% 0, 100% 100%, 47% 100%, 55% 62%, 45% 38%); }
+.seal-mark {
+  position: absolute; inset: 14%; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.18);
+  display: grid; place-items: center; pointer-events: none;
+  font: italic 600 clamp(26px, 7.5vw, 38px)/1 var(--display); color: #f2d6da; text-shadow: 0 1px 0 rgba(0,0,0,.35);
+  transition: opacity .3s;
+}
+.seal.broken { animation: none; cursor: default; }
+.seal.broken .seal-half.l { transform: translate(-45%, 35%) rotate(-28deg); opacity: 0; }
+.seal.broken .seal-half.r { transform: translate(45%, 35%) rotate(28deg); opacity: 0; }
+.seal.broken .seal-mark { opacity: 0; }
+@keyframes pulse { 50% { transform: scale(1.06); } }
+
+/* Papier */
+.paper {
+  background: var(--paper); color: var(--ink); color-scheme: light;
+  padding: clamp(22px, 5.5vw, 44px); border-radius: 2px; position: relative;
+  box-shadow: 0 34px 60px -34px #000, 0 0 0 1px rgba(0,0,0,.25);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.paper::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 5px;
+  background: repeating-linear-gradient(90deg, var(--wax) 0 14px, transparent 14px 20px, var(--ink) 20px 34px, transparent 34px 40px);
+  opacity: .55;
+}
+.court { font: 500 10.5px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid var(--rule); padding-bottom: 12px; }
+.paper h1 { font: italic 500 clamp(44px, 12vw, 70px)/.95 var(--display); margin: 4px 0 0; text-wrap: balance; letter-spacing: -.01em; }
+.paper h2 { font: italic 500 clamp(32px, 8.5vw, 46px)/1 var(--display); margin: 4px 0 0; text-wrap: balance; }
+.paper p { margin: 0; }
+.to { color: var(--ink-soft); }
+.to strong { color: var(--ink); font-weight: 600; }
+.lede { color: var(--ink-soft); font-style: italic; }
+.motifs { display: flex; flex-direction: column; gap: 9px; }
+.sc { font-variant: small-caps; letter-spacing: .06em; font-weight: 600; }
+.decide { font: 600 12px/1.4 var(--mono) !important; letter-spacing: .14em; text-transform: uppercase; padding-top: 4px; }
+.articles { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.articles b { font: italic 600 1.05em var(--display); }
+.sign { text-align: right; font-style: italic; color: var(--ink-soft); }
+.sign em { font: italic 600 26px/1.2 var(--display); color: var(--ink); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn {
+  border: 1.5px solid var(--ink); background: var(--ink); color: var(--paper);
+  font: 600 15px/1.2 var(--body); padding: 13px 20px; border-radius: 2px; cursor: pointer;
+  transition: transform .15s ease, background .15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.light { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.btn.light.ghost { background: transparent; color: var(--on-night); border-color: var(--line); }
+.linkbtn { background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; color: var(--ink-soft); font-style: italic; }
+.nav-next { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+
+.stamp {
+  display: inline-block; align-self: flex-start; border: 3px double var(--wax); color: var(--wax);
+  font: 700 13px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; padding: 9px 12px;
+  transform: rotate(-5deg); animation: stamp .55s cubic-bezier(.2,1.5,.4,1) both;
+}
+@keyframes stamp { from { transform: rotate(-5deg) scale(2.3); opacity: 0; } to { transform: rotate(-5deg) scale(1); opacity: 1; } }
+.renvoi { display: flex; flex-direction: column; gap: 12px; border-left: 3px solid var(--wax); padding-left: 14px; }
+.aside { font-style: italic; color: var(--wax); }
+
+/* Pièces */
+.pieces { display: flex; flex-direction: column; }
+.piece { display: grid; grid-template-columns: 5.6em minmax(0, 1fr); gap: 4px 14px; padding: 14px 0; border-top: 1px solid var(--rule); }
+.piece-no { font: 600 11px/1.5 var(--mono); color: var(--wax); letter-spacing: .08em; text-transform: uppercase; padding-top: 3px; }
+.piece-body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.piece-title { font: italic 600 19px/1.2 var(--display); }
+.piece-text { position: relative; }
+.piece-text.lift::after {
+  content: ""; position: absolute; inset: 0; background: var(--ink); transform-origin: right center;
+  animation: wipe 1s .25s cubic-bezier(.7,0,.2,1) forwards;
+}
+@keyframes wipe { to { transform: scaleX(0); } }
+.redact { display: block; height: 1.05em; background: var(--ink); border-radius: 1px; }
+.piece-when { font: 500 11.5px/1.45 var(--mono); color: var(--ink-soft); }
+.maplink { font: 500 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--wax); white-space: nowrap; }
+
+/* Quiz */
+.q { display: flex; flex-direction: column; gap: 10px; padding: 14px 0; border-top: 1px solid var(--rule); }
+.q-label { font-weight: 600; }
+.opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt { border: 1.2px solid var(--ink); background: transparent; color: var(--ink); padding: 8px 13px; border-radius: 2px; cursor: pointer; font-size: 15px; }
+.opt[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.reply { font-style: italic; color: var(--wax); }
+.quiz-done { font: 600 12px/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); border-top: 1px solid var(--rule); padding-top: 14px; }
+
+/* Verrous */
+.locked { border: 1px dashed rgba(27,34,53,.35); padding: 18px; display: flex; flex-direction: column; gap: 8px; }
+.lock-label { font: 600 11px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--wax); }
+.big-q { font: italic 500 clamp(26px, 7vw, 34px)/1.15 var(--display); text-wrap: balance; }
+
+/* Verdict */
+.form { display: flex; flex-direction: column; gap: 4px; }
+.field { display: flex; flex-direction: column; gap: 8px; padding: 14px 0; border: 0; border-top: 1px solid var(--rule); margin: 0; min-width: 0; }
+.field-label, .field legend { font: 600 11px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); padding: 0; }
+.field legend { margin-bottom: 8px; float: left; width: 100%; }
+.stars { display: inline-flex; flex-direction: row-reverse; justify-content: flex-end; gap: 2px; }
+.stars input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.stars label { font-size: 34px; line-height: 1; color: rgba(27,34,53,.22); cursor: pointer; padding: 2px; }
+.stars input:checked ~ label, .stars label:hover, .stars label:hover ~ label { color: var(--wax); }
+.stars input:focus-visible + label { outline: 2px solid var(--wax-hi); }
+.choice { display: flex; gap: 10px; align-items: flex-start; padding: 5px 0; cursor: pointer; clear: both; }
+.choice input { accent-color: var(--wax); width: 18px; height: 18px; margin-top: 4px; flex: none; }
+textarea {
+  width: 100%; min-height: 96px; font: 16px/1.5 var(--body); padding: 10px 12px; resize: vertical;
+  border: 1px solid rgba(27,34,53,.35); background: rgba(255,255,255,.55); color: var(--ink); border-radius: 2px;
+}
+.form-err { color: var(--wax); font-style: italic; }
+.recap { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 16px; }
+.recap dt { font: 600 11px/1.9 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+.recap dd { margin: 0; overflow-wrap: anywhere; }
+.recap .st { color: var(--wax); letter-spacing: .1em; }
+#verdict-text { font: 14px/1.5 var(--mono); min-height: 170px; }
+.copy-msg { font-style: italic; color: var(--wax); }
+
+.foot { font: 500 10.5px/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--mist); text-align: center; padding-top: 8px; }
+
+/* Régie de démonstration */
+.demobar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  background: rgba(6, 7, 12, .92); border-top: 1px solid var(--brass);
+  padding-top: 10px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 8px;
+}
+.demobar-head { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font: 500 11px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--brass); }
+.demobar-head output { color: var(--on-night); }
+.demo-row { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
+.chip { flex: none; border: 1px solid var(--line); background: var(--night-2); color: var(--on-night); font: 500 12px/1 var(--mono); padding: 9px 10px; border-radius: 2px; cursor: pointer; }
+.chip.on { border-color: var(--brass); color: var(--brass); }
+.chip.warn { border-color: var(--wax-hi); color: #f0b9c1; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .piece-text.lift::after { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="ref"><span>Juridiction des belles soirées</span><span>Réf. 2026/1102-1900</span></header>
+  <nav class="rail" id="rail" aria-label="Étapes"></nav>
+  <main id="view"></main>
+  <footer class="foot">Soirée non déductible · TVA à taux zéro · Aucun rescrit ne sera délivré</footer>
+</div>
+<div class="demobar" id="demobar" hidden></div>
+
+<script>
+const SECRET = {"p1": "QWN0ZSBJIHNlIGJvaXQuIFBvdXIgeSBhY2PDqWRlciwgaWwgZmF1ZHJhIGRlc2NlbmRyZSBzb3VzIGxhIHN1cmZhY2Uu", "p2": "QWN0ZSBJSSB2aWVudCBkZSBsJ2F1dHJlIGJvdXQgZHUgbW9uZGUuIElsIGVzdCBwbGFjw6kgc291cyByw6lzZXJ2ZSA6IGMnZXN0IHZvdXMgcXVpIGTDqWNpZGVyZXosIGxlIG1vbWVudCB2ZW51LCBzJ2lsIGEgbGlldS4=", "p3": "PHN0cm9uZz5IYXplPC9zdHJvbmc+LCA0IHJ1ZSBkZSBsJ0FyYy1kZS1UcmlvbXBoZSwgUGFyaXMgMTc8c3VwPmU8L3N1cD4sIMOgIDE5aDAwLiBQb3Vzc2V6IGxhIHBvcnRlLCBtw6ptZSBzaSBlbGxlIGEgbCdhaXIgw6l0cmFuZ2UuIDxhIGNsYXNzPSJtYXBsaW5rIiBocmVmPSJodHRwczovL3d3dy5nb29nbGUuY29tL21hcHMvc2VhcmNoLz9hcGk9MSZxdWVyeT1IYXplKzQrUnVlK2RlK2wlMjdBcmMrZGUrVHJpb21waGUrNzUwMTcrUGFyaXMiIHRhcmdldD0iX2JsYW5rIiByZWw9Im5vb3BlbmVyIj5Wb2lyIGxlIHBsYW48L2E+", "p4": "TCdhdWRpZW5jZSBlc3Qgb3V2ZXJ0ZS4gU2kgdm91cyBsaXNleiBjZWNpLCB2b3VzIGRldnJpZXogZMOpasOgIMOqdHJlIGzDoC4gTGUgcmV0YXJkIGVzdCB0b2zDqXLDqSA7IGwnYWJzZW5jZSwgYmVhdWNvdXAgbW9pbnMu", "a2": "PHN0cm9uZz5OS0kgU3VzaGk8L3N0cm9uZz4sIDEyIGF2ZW51ZSBNYWMtTWFob24uIFRhYmxlIHLDqXNlcnbDqWUgw6AgMjBoNDUsIGF1IG5vbSBkdSBkZW1hbmRldXIuIERpc3RhbmNlIGRlcHVpcyBsYSBzYWxsZSBkJ2F1ZGllbmNlIDogdW5lIG1pbnV0ZSDDoCBwaWVkLiA8YSBjbGFzcz0ibWFwbGluayIgaHJlZj0iaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS9tYXBzL3NlYXJjaC8/YXBpPTEmcXVlcnk9TktJK1NVU0hJK1BhcmlzKzEyK0F2K01hYy1NYWhvbiIgdGFyZ2V0PSJfYmxhbmsiIHJlbD0ibm9vcGVuZXIiPlZvaXIgbGUgcGxhbjwvYT4="};
+const reveal = (b) => new TextDecoder().decode(Uint8Array.from(atob(b), (c) => c.charCodeAt(0)));
+
+// Réglages. Heures données en UTC : Paris = UTC+1 en novembre.
+const CFG = {
+  nom: "Manon Lacaze", // prénom et nom, ex. "Camille" → « Maître Camille ». Vide → « Maître »
+  signature: "A.",
+  faitLe: "30 octobre 2026",
+  echeance: Date.UTC(2026, 10, 2, 18, 0),  // lundi 2 novembre, 19h00
+  acte2: Date.UTC(2026, 10, 2, 19, 0),     // lundi, 20h00
+  verdict: Date.UTC(2026, 10, 2, 21, 0),   // lundi, 22h00
+  pieces: [
+    { id: "p1", no: "Pièce n° 1", titre: "Acte I", at: Date.UTC(2026, 9, 31, 11, 0) },
+    { id: "p2", no: "Pièce n° 2", titre: "Acte II", at: Date.UTC(2026, 10, 1, 11, 0) },
+    { id: "p3", no: "Pièce n° 3", titre: "Lieu de comparution", at: Date.UTC(2026, 10, 2, 11, 0) },
+    { id: "p4", no: "Pièce n° 4", titre: "Ouverture de l'audience", at: Date.UTC(2026, 10, 2, 18, 0) },
+  ],
+};
+
+const QUIZ = [
+  { id: "q1", q: "Le cocktail idéal ?", o: [
+    ["Mojito", "Noté. Le demandeur avait comme un pressentiment."],
+    ["Negroni", "Amer et élégant. Recevable."],
+    ["Spritz", "Recevable, sous réserve d'en reparler."],
+    ["Surprenez-moi", "Requête accordée. C'est un peu le principe."],
+  ] },
+  { id: "q2", q: "Les baguettes ?", o: [
+    ["Maîtrise parfaite", "La juridiction en prend acte et vérifiera sur pièces."],
+    ["Ça dépend du nombre de cocktails", "Réponse d'avocate. Irréprochable."],
+    ["Fourchette, et j'assume", "Courage salué. Aucune sanction prévue."],
+  ] },
+  { id: "q3", q: "Plutôt programme ou surprise ?", o: [
+    ["Programme détaillé", "Rejeté. Voir l'article 4."],
+    ["Surprise totale", "Excellente jurisprudence. Vous êtes au bon endroit."],
+  ] },
+];
+
+const STEPS = ["Le sceau", "Convocation", "Dossier", "Acte II", "Verdict"];
+const ROMAN = ["I", "II", "III", "IV", "V"];
+const DEMO = location.hash === "#demo";
+const KEY = DEMO ? "convocation-demo-v1" : "convocation-v1";
+const maitre = CFG.nom ? "Maître " + CFG.nom : "Maître";
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const store = {
+  get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+};
+const fresh = () => ({ view: 0, seal: false, accepted: false, renvoi: false, quiz: {}, seen: {}, acte2: null, verdict: null });
+let S = Object.assign(fresh(), store.get(KEY) || {});
+const save = () => store.set(KEY, S);
+
+let offset = DEMO ? (store.get("convocation-demo-offset") || 0) : 0;
+const now = () => Date.now() + offset;
+const isOpen = (t) => now() >= t;
+
+const PARIS = new Intl.DateTimeFormat("fr-FR", { timeZone: "Europe/Paris", weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
+const quand = (t) => PARIS.format(new Date(t)).replace(/(\d{1,2}):(\d{2})/, "$1h$2");
+function dans(ms) {
+  if (ms <= 0) return "maintenant";
+  const m = Math.ceil(ms / 60000), d = Math.floor(m / 1440), h = Math.floor((m % 1440) / 60), mm = m % 60;
+  return "dans " + [d && d + " j", h && h + " h", !d && mm && mm + " min"].filter(Boolean).join(" ");
+}
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const $ = (sel) => document.querySelector(sel);
+
+function allowed(i) { return i === 0 || (i === 1 && S.seal) || (i >= 2 && S.accepted); }
+
+function cdHTML() {
+  const units = [["d", "jours"], ["h", "heures"], ["m", "minutes"], ["s", "secondes"]];
+  return `<div class="cd" data-cd>
+    <span class="cd-label" data-cd-label>Échéance · lundi 2 novembre, 19h00</span>
+    <div class="cd-digits">${units.map(([u, l]) => `<div><b data-u="${u}">00</b><small>${l}</small></div>`).join("")}</div>
+  </div>`;
+}
+
+function sealHTML(act, label) {
+  return `<button class="seal${S.seal && act === "seal" ? " broken" : ""}" data-act="${act}" aria-label="${label}">
+    <span class="seal-half l"></span><span class="seal-half r"></span><span class="seal-mark">${esc(CFG.signature)}</span>
+  </button>`;
+}
+
+function viewSceau() {
+  return `<section class="stage">
+    <p class="eyebrow">Pli confidentiel · à n'ouvrir que par la destinataire</p>
+    <div class="envelope">
+      <div class="env-flap"></div>
+      <p class="env-addr">À l'attention de<br><em>${esc(maitre)}</em><br><span>Paris XVII<sup>e</sup></span></p>
+      <span class="env-stamp">Pli outrecuidant</span>
+      <div class="seal-wrap">${sealHTML("seal", "Briser le sceau")}</div>
+    </div>
+    ${S.seal
+      ? `<div class="actions"><button class="btn light" data-act="goto" data-to="1">Relire la convocation</button></div>`
+      : `<p class="hint">Touchez le sceau pour ouvrir le pli.</p>`}
+    ${cdHTML()}
+  </section>`;
+}
+
+function viewConvocation() {
+  let actions;
+  if (S.accepted) {
+    actions = `<span class="stamp">Comparution acceptée</span>
+      <div class="actions"><button class="btn" data-act="goto" data-to="2">Ouvrir le dossier</button></div>`;
+  } else if (S.renvoi) {
+    actions = `<div class="renvoi">
+      <p>Requête en renvoi enregistrée. Le demandeur, beau joueur, l'accepte sans condition : un simple message suffit, aucune justification n'est exigée.</p>
+      <p class="aside">Cela dit, avouez que vous êtes curieuse.</p>
+      <div class="actions"><button class="btn" data-act="accept">Finalement, je comparais</button></div>
+    </div>`;
+  } else {
+    actions = `<div class="actions">
+      <button class="btn" data-act="accept">Je comparais</button>
+      <button class="btn ghost" data-act="renvoi">Je sollicite un renvoi</button>
+    </div>`;
+  }
+  return `<article class="paper">
+    <div class="court"><span>Chambre des premières fois</span><span>Réf. 2026/1102-1900</span></div>
+    <h1>Convocation</h1>
+    <p class="to">À l'attention de <strong>${esc(maitre)}</strong>, avocate fiscaliste, Paris XVII<sup>e</sup></p>
+    <div class="motifs">
+      <p><span class="sc">Vu</span> le calendrier, qui n'avait rien prévu de particulier pour le lundi soir ;</p>
+      <p><span class="sc">Vu</span> la saison, qui appelle les soirées courtes et les verres longs ;</p>
+      <p><span class="sc">Considérant</span> que la présente démarche est parfaitement outrecuidante, et que le demandeur l'assume entièrement ;</p>
+      <p><span class="sc">Considérant</span> que tout le monde mérite, au moins une fois, une soirée qu'il n'a pas eu à organiser ;</p>
+    </div>
+    <p class="decide">Par ces motifs, il est décidé ce qui suit :</p>
+    <ol class="articles">
+      <li><b>Article 1<sup>er</sup>.</b> Vous êtes convoquée le lundi 2 novembre 2026, à 19 heures précises.</li>
+      <li><b>Article 2.</b> Aucune préparation n'est requise. Prévoyez simplement de ne rien prévoir après.</li>
+      <li><b>Article 3.</b> La soirée comporte deux actes. Leur contenu est placé sous scellés et sera déclassifié selon un calendrier connu du seul demandeur.</li>
+      <li><b>Article 4.</b> Toute tentative d'obtenir des informations anticipées auprès du demandeur sera rejetée. Avec le sourire.</li>
+    </ol>
+    <p class="sign">Fait à Paris, le ${esc(CFG.faitLe)}.<br>Le demandeur, <em>${esc(CFG.signature)}</em></p>
+    ${actions}
+  </article>`;
+}
+
+function pieceHTML(p) {
+  if (!isOpen(p.at)) {
+    return `<div class="piece">
+      <span class="piece-no">${p.no}</span>
+      <div class="piece-body">
+        <p class="piece-title">${p.titre}</p>
+        <span class="redact" style="width:94%"></span><span class="redact" style="width:61%"></span>
+        <p class="piece-when">Déclassification ${quand(p.at)} · <span data-until="${p.at}"></span></p>
+      </div>
+    </div>`;
+  }
+  const lift = S.seen[p.id] ? "" : " lift";
+  return `<div class="piece">
+    <span class="piece-no">${p.no}</span>
+    <div class="piece-body">
+      <p class="piece-title">${p.titre}</p>
+      <p class="piece-text${lift}">${reveal(SECRET[p.id])}</p>
+    </div>
+  </div>`;
+}
+
+function quizHTML() {
+  const rows = QUIZ.map((item) => {
+    const pick = S.quiz[item.id];
+    const reply = item.o.find(([label]) => label === pick);
+    return `<div class="q">
+      <p class="q-label">${item.q}</p>
+      <div class="opts">${item.o.map(([label]) =>
+        `<button class="opt" data-act="quiz" data-q="${item.id}" data-v="${esc(label)}" aria-pressed="${pick === label}">${label}</button>`).join("")}</div>
+      ${reply ? `<p class="reply">${reply[1]}</p>` : ""}
+    </div>`;
+  }).join("");
+  const done = QUIZ.every((item) => S.quiz[item.id]);
+  return rows + (done ? `<p class="quiz-done">Questions préjudicielles closes. Le dossier est en état d'être jugé.</p>` : "");
+}
+
+function viewDossier() {
+  return `<section class="stack">
+    ${cdHTML()}
+    <article class="paper">
+      <div class="court"><span>Dossier n° 2026/1102</span><span>Pièces sous scellés</span></div>
+      <h2>Le dossier</h2>
+      <p class="lede">Les pièces sont déclassifiées une à une. Revenez les consulter : le dossier se complète tout seul.</p>
+      <div class="pieces">${CFG.pieces.map(pieceHTML).join("")}</div>
+    </article>
+    <div class="nav-next">
+      <button class="btn light ghost" data-act="goto" data-to="1">← Convocation</button>
+      <button class="btn light" data-act="goto" data-to="3">Acte II →</button>
+    </div>
+  </section>`;
+}
+
+function viewActe2() {
+  let body;
+  if (!isOpen(CFG.acte2)) {
+    body = `<div class="locked">
+      <span class="lock-label">Sous scellés</span>
+      <p>Cet acte ne peut être ouvert que le lundi 2 novembre, à partir de 20h00. Et seulement par vous.</p>
+      <p class="piece-when">Ouverture <span data-until="${CFG.acte2}"></span></p>
+    </div>`;
+  } else if (S.acte2 === "oui") {
+    body = `<span class="stamp">Scellés levés</span>
+      <p class="big-q">Vous avez dit oui. Excellente décision.</p>
+      <p>${reveal(SECRET.a2)}</p>
+      <p class="lede">La suite se plaide à table.</p>`;
+  } else if (S.acte2 === "non") {
+    body = `<p class="big-q">Décision enregistrée et respectée.</p>
+      <p>Retour aux Ternes : cinq minutes à pied. Merci pour l'Acte I, sincèrement.</p>
+      <p><button class="linkbtn" data-act="a2-reset">En fait, je change d'avis</button></p>`;
+  } else {
+    body = `<p class="lede">Question unique, posée une seule fois.</p>
+      <p class="big-q">Souhaitez-vous ouvrir l'Acte II ?</p>
+      <p>Le demandeur s'engage à respecter votre décision, quelle qu'elle soit, et sans faire la tête.</p>
+      <div class="seal-wrap inline">${sealHTML("a2-oui", "Lever les scellés de l'Acte II")}</div>
+      <div class="actions">
+        <button class="btn" data-act="a2-oui">Oui, levez les scellés</button>
+        <button class="btn ghost" data-act="a2-non">Non, je rentre</button>
+      </div>`;
+  }
+  return `<section class="stack">
+    <article class="paper">
+      <div class="court"><span>Acte II</span><span>Sous réserve</span></div>
+      <h2>L'Acte II</h2>
+      ${body}
+    </article>
+    <div class="nav-next">
+      <button class="btn light ghost" data-act="goto" data-to="2">← Dossier</button>
+      <button class="btn light" data-act="goto" data-to="4">Le verdict →</button>
+    </div>
+  </section>`;
+}
+
+const FOU = ["Parfaitement normal", "Un peu fou", "Complètement fou (dans le bon sens)", "Outrecuidant, mais ça marche"];
+const SECONDE = ["Oui", "Oui, évidemment", "À délibérer"];
+const starStr = (n) => "★".repeat(n) + "☆".repeat(5 - n);
+
+function starsHTML(name, label) {
+  let inputs = "";
+  for (let v = 5; v >= 1; v--) {
+    inputs += `<input type="radio" id="${name}-${v}" name="${name}" value="${v}"><label for="${name}-${v}" title="${v}/5">★</label>`;
+  }
+  return `<fieldset class="field"><legend>${label}</legend><div class="stars">${inputs}</div></fieldset>`;
+}
+function choicesHTML(name, label, list) {
+  return `<fieldset class="field"><legend>${label}</legend>${list.map((txt, i) =>
+    `<label class="choice"><input type="radio" id="${name}-${i}" name="${name}" value="${esc(txt)}"><span>${txt}</span></label>`).join("")}</fieldset>`;
+}
+
+function verdictText(v) {
+  return [
+    "Verdict du 2 novembre 2026",
+    "Cocktails : " + starStr(v.cocktails) + " (" + v.cocktails + "/5)",
+    v.sushis ? "Sushis : " + starStr(v.sushis) + " (" + v.sushis + "/5)" : null,
+    "Compagnie : " + starStr(v.compagnie) + " (" + v.compagnie + "/5)",
+    "Le demandeur est : " + v.fou,
+    "Seconde audience : " + (v.seconde || "non précisé"),
+    "Observations : " + (v.obs || "néant"),
+  ].filter(Boolean).join("\n");
+}
+
+function viewVerdict() {
+  let body;
+  if (!isOpen(CFG.verdict)) {
+    body = `<div class="locked">
+      <span class="lock-label">Pas encore</span>
+      <p>Le formulaire d'évaluation sera remis en fin de soirée, lundi à partir de 22h00.</p>
+      <p class="piece-when">Remise <span data-until="${CFG.verdict}"></span></p>
+    </div>`;
+  } else if (S.verdict) {
+    const v = S.verdict;
+    body = `<span class="stamp">Jugement rendu</span>
+      <dl class="recap">
+        <dt>Cocktails</dt><dd class="st">${starStr(v.cocktails)}</dd>
+        ${v.sushis ? `<dt>Sushis</dt><dd class="st">${starStr(v.sushis)}</dd>` : ""}
+        <dt>Compagnie</dt><dd class="st">${starStr(v.compagnie)}</dd>
+        <dt>Le demandeur</dt><dd>${esc(v.fou)}</dd>
+        <dt>2<sup>de</sup> audience</dt><dd>${esc(v.seconde || "non précisé")}</dd>
+        ${v.obs ? `<dt>Observations</dt><dd>${esc(v.obs)}</dd>` : ""}
+      </dl>
+      <p>Reste une formalité : transmettre le verdict au demandeur. Copiez-le et envoyez-le-lui par message.</p>
+      <textarea id="verdict-text" readonly aria-label="Texte du verdict">${esc(verdictText(v))}</textarea>
+      <div class="actions">
+        <button class="btn" data-act="copy">Copier le verdict</button>
+        <button class="btn ghost" data-act="v-reset">Modifier</button>
+      </div>
+      <p class="copy-msg" id="copy-msg" hidden></p>`;
+  } else {
+    body = `<p class="lede">Formulaire n° 2-11-2026 (Cerfa imaginaire). À remplir à chaud, en toute impartialité.</p>
+      <form id="verdict-form" class="form" novalidate>
+        ${starsHTML("cocktails", "Les cocktails")}
+        ${S.acte2 === "oui" ? starsHTML("sushis", "Les sushis") : ""}
+        ${starsHTML("compagnie", "La compagnie")}
+        ${choicesHTML("fou", "Le demandeur est", FOU)}
+        <div class="field">
+          <label class="field-label" for="obs">Observations de la requérante</label>
+          <textarea id="obs" name="obs" maxlength="600" placeholder="Facultatif, mais lu avec la plus grande attention."></textarea>
+        </div>
+        ${choicesHTML("seconde", "Demande de seconde audience", SECONDE)}
+        <p class="form-err" id="form-err" hidden></p>
+        <div class="actions"><button class="btn" type="submit">Rendre le verdict</button></div>
+      </form>`;
+  }
+  return `<section class="stack">
+    <article class="paper">
+      <div class="court"><span>Formulaire d'évaluation</span><span>N° 2-11-2026</span></div>
+      <h2>Le verdict</h2>
+      ${body}
+    </article>
+    <div class="nav-next">
+      <button class="btn light ghost" data-act="goto" data-to="3">← Acte II</button>
+    </div>
+  </section>`;
+}
+
+const VIEWS = [viewSceau, viewConvocation, viewDossier, viewActe2, viewVerdict];
+
+function renderRail() {
+  $("#rail").innerHTML = STEPS.map((label, i) => {
+    const cls = i === S.view ? "current" : allowed(i) ? "done" : "";
+    return `<button class="${cls}" data-act="goto" data-to="${i}" ${allowed(i) ? "" : "disabled"} ${i === S.view ? 'aria-current="step"' : ""}><b>${ROMAN[i]}</b>${label}</button>`;
+  }).join("");
+}
+
+let lastSig = "";
+const sig = () => CFG.pieces.map((p) => +isOpen(p.at)).join("") + +isOpen(CFG.echeance) + +isOpen(CFG.acte2) + +isOpen(CFG.verdict);
+
+function render() {
+  while (S.view > 0 && !allowed(S.view)) S.view--;
+  renderRail();
+  $("#view").innerHTML = VIEWS[S.view]();
+  lastSig = sig();
+  let changed = false;
+  if (S.view === 2) CFG.pieces.forEach((p) => { if (isOpen(p.at) && !S.seen[p.id]) { S.seen[p.id] = true; changed = true; } });
+  if (changed) save();
+  tick(true);
+  if (DEMO) renderDemo();
+}
+
+function go(i) {
+  if (!allowed(i)) return;
+  S.view = i; save(); render();
+  window.scrollTo({ top: 0, behavior: REDUCED ? "auto" : "smooth" });
+}
+
+function tick(skipCheck) {
+  if (!skipCheck && sig() !== lastSig && !document.activeElement?.closest("form")) { render(); return; }
+  const left = CFG.echeance - now();
+  document.querySelectorAll("[data-cd]").forEach((cd) => {
+    if (left <= 0) {
+      cd.innerHTML = `<span class="cd-label">Lundi 2 novembre, 19h00</span><p class="cd-open">L'audience est ouverte.</p>`;
+      return;
+    }
+    const s = Math.floor(left / 1000);
+    const vals = { d: Math.floor(s / 86400), h: Math.floor((s % 86400) / 3600), m: Math.floor((s % 3600) / 60), s: s % 60 };
+    cd.querySelectorAll("[data-u]").forEach((el) => { el.textContent = String(vals[el.dataset.u]).padStart(2, "0"); });
+  });
+  document.querySelectorAll("[data-until]").forEach((el) => { el.textContent = dans(+el.dataset.until - now()); });
+  if (DEMO) { const o = $("#demo-now"); if (o) o.textContent = quand(now()); }
+}
+
+function breakSeal(btn, then) {
+  btn.classList.add("broken");
+  setTimeout(then, REDUCED ? 0 : 900);
+}
+
+document.addEventListener("click", (e) => {
+  const el = e.target.closest("[data-act]");
+  if (!el || el.disabled) return;
+  const act = el.dataset.act;
+  if (act === "goto") go(+el.dataset.to);
+  else if (act === "seal" && !S.seal) breakSeal(el, () => { S.seal = true; go(1); });
+  else if (act === "accept") { S.accepted = true; S.renvoi = false; save(); render(); }
+  else if (act === "renvoi") { S.renvoi = true; save(); render(); }
+  else if (act === "quiz") { S.quiz[el.dataset.q] = el.dataset.v; save(); $("#quiz").innerHTML = quizHTML(); }
+  else if (act === "a2-oui") {
+    const seal = document.querySelector('.seal[data-act="a2-oui"]');
+    const done = () => { S.acte2 = "oui"; save(); render(); };
+    seal ? breakSeal(seal, done) : done();
+  }
+  else if (act === "a2-non") { S.acte2 = "non"; save(); render(); }
+  else if (act === "a2-reset") { S.acte2 = null; save(); render(); }
+  else if (act === "v-reset") { S.verdict = null; save(); render(); }
+  else if (act === "copy") copyVerdict();
+  else if (act === "demo-at") { setOffset(+el.dataset.t - Date.now()); }
+  else if (act === "demo-real") { setOffset(0); }
+  else if (act === "demo-reset") { S = fresh(); save(); render(); window.scrollTo({ top: 0 }); }
+});
+
+document.addEventListener("submit", (e) => {
+  if (e.target.id !== "verdict-form") return;
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const num = (k) => +f.get(k) || 0;
+  const v = { cocktails: num("cocktails"), sushis: S.acte2 === "oui" ? num("sushis") : 0, compagnie: num("compagnie"), fou: f.get("fou"), obs: String(f.get("obs") || "").trim(), seconde: f.get("seconde") };
+  const err = $("#form-err");
+  const missing = [];
+  if (!v.cocktails) missing.push("la note des cocktails");
+  if (S.acte2 === "oui" && !v.sushis) missing.push("la note des sushis");
+  if (!v.compagnie) missing.push("la note de la compagnie");
+  if (!v.fou) missing.push("votre avis sur le demandeur");
+  if (missing.length) { err.textContent = "Il manque " + missing.join(", ") + "."; err.hidden = false; return; }
+  S.verdict = v; save(); render();
+  window.scrollTo({ top: 0, behavior: REDUCED ? "auto" : "smooth" });
+});
+
+function copyVerdict() {
+  const ta = $("#verdict-text"), msg = $("#copy-msg");
+  const fallback = () => { ta.focus(); ta.select(); msg.textContent = "Texte sélectionné : copiez-le avec votre téléphone, puis envoyez-le au demandeur."; msg.hidden = false; };
+  try {
+    navigator.clipboard.writeText(ta.value).then(() => { msg.textContent = "Copié. Collez-le dans votre conversation avec le demandeur."; msg.hidden = false; }, fallback);
+  } catch (e) { fallback(); }
+}
+
+/* Régie de démonstration (lien avec #demo) : simule l'heure et rejoue tout de A à Z. */
+const PRESETS = [
+  ["Ven. 20h · envoi", Date.UTC(2026, 9, 30, 19, 0)],
+  ["Sam. 12h", Date.UTC(2026, 9, 31, 11, 0)],
+  ["Dim. 12h", Date.UTC(2026, 10, 1, 11, 0)],
+  ["Lun. 12h", Date.UTC(2026, 10, 2, 11, 0)],
+  ["Lun. 19h", Date.UTC(2026, 10, 2, 18, 0)],
+  ["Lun. 20h", Date.UTC(2026, 10, 2, 19, 0)],
+  ["Lun. 22h", Date.UTC(2026, 10, 2, 21, 0)],
+];
+function setOffset(o) { offset = o; store.set("convocation-demo-offset", o); render(); }
+function renderDemo() {
+  const bar = $("#demobar");
+  bar.hidden = false;
+  const t = now();
+  bar.innerHTML = `<div class="demobar-head"><span>Mode démo · elle ne voit pas cette barre</span><span>Heure simulée : <output id="demo-now">${quand(t)}</output></span></div>
+    <div class="demo-row">${PRESETS.map(([label, at]) =>
+      `<button class="chip${Math.abs(t - at) < 60000 ? " on" : ""}" data-act="demo-at" data-t="${at}">${label}</button>`).join("")}
+      <button class="chip${offset === 0 ? " on" : ""}" data-act="demo-real">Heure réelle</button>
+      <button class="chip warn" data-act="demo-reset">Recommencer à zéro</button>
+    </div>`;
+}
+
+if (DEMO) document.body.classList.add("demo");
+render();
+setInterval(() => tick(false), 1000);
+</script>
+
+</body>
+</html>
