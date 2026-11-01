@@ -311,7 +311,7 @@ textarea {
 </head>
 <body>
 <div class="app">
-  <header class="ref"><span>Juridiction des belles soirées</span><span>Réf. 2026/1102-1900</span></header>
+  <header class="ref"><span>Juridiction des belles soirées</span><span>Réf. 2026/1102-1930</span></header>
   <nav class="rail" id="rail" aria-label="Étapes"></nav>
   <p class="rail-now" id="rail-now"></p>
   <main id="view"></main>
@@ -320,7 +320,7 @@ textarea {
 <div class="demobar" id="demobar" hidden></div>
 
 <script>
-const SECRET = {"p1": "QWN0ZSBJIHNlIGJvaXQuIFBvdXIgeSBhY2PDqWRlciwgaWwgZmF1ZHJhIGRlc2NlbmRyZSBzb3VzIGxhIHN1cmZhY2Uu", "p2": "QWN0ZSBJSSB2aWVudCBkZSBsJ2F1dHJlIGJvdXQgZHUgbW9uZGUuIElsIGVzdCBwbGFjw6kgc291cyByw6lzZXJ2ZSA6IGMnZXN0IHZvdXMgcXVpIGTDqWNpZGVyZXosIGxlIG1vbWVudCB2ZW51LCBzJ2lsIGEgbGlldS4=", "p3": "PHN0cm9uZz5IYXplPC9zdHJvbmc+LCA0IHJ1ZSBkZSBsJ0FyYy1kZS1UcmlvbXBoZSwgUGFyaXMgMTc8c3VwPmU8L3N1cD4sIMOgIDE5aDAwLiBQb3Vzc2V6IGxhIHBvcnRlLCBtw6ptZSBzaSBlbGxlIGEgbCdhaXIgw6l0cmFuZ2UuIDxhIGNsYXNzPSJtYXBsaW5rIiBocmVmPSJodHRwczovL3d3dy5nb29nbGUuY29tL21hcHMvc2VhcmNoLz9hcGk9MSZxdWVyeT1IYXplKzQrUnVlK2RlK2wlMjdBcmMrZGUrVHJpb21waGUrNzUwMTcrUGFyaXMiIHRhcmdldD0iX2JsYW5rIiByZWw9Im5vb3BlbmVyIj5Wb2lyIGxlIHBsYW48L2E+", "p4": "TCdhdWRpZW5jZSBlc3Qgb3V2ZXJ0ZS4gU2kgdm91cyBsaXNleiBjZWNpLCB2b3VzIGRldnJpZXogZMOpasOgIMOqdHJlIGzDoC4gTGUgcmV0YXJkIGVzdCB0b2zDqXLDqSA7IGwnYWJzZW5jZSwgYmVhdWNvdXAgbW9pbnMu", "a2": "PHN0cm9uZz5OS0kgU3VzaGk8L3N0cm9uZz4sIDEyIGF2ZW51ZSBNYWMtTWFob24uIFRhYmxlIHLDqXNlcnbDqWUgw6AgMjBoNDUsIGF1IG5vbSBkdSBkZW1hbmRldXIuIERpc3RhbmNlIGRlcHVpcyBsYSBzYWxsZSBkJ2F1ZGllbmNlIDogdW5lIG1pbnV0ZSDDoCBwaWVkLiA8YSBjbGFzcz0ibWFwbGluayIgaHJlZj0iaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS9tYXBzL3NlYXJjaC8/YXBpPTEmcXVlcnk9TktJK1NVU0hJK1BhcmlzKzEyK0F2K01hYy1NYWhvbiIgdGFyZ2V0PSJfYmxhbmsiIHJlbD0ibm9vcGVuZXIiPlZvaXIgbGUgcGxhbjwvYT4="};
+const SECRET = {"p1": "QWN0ZSBJIHNlIGJvaXQuIFBvdXIgeSBhY2PDqWRlciwgaWwgZmF1ZHJhIGRlc2NlbmRyZSBzb3VzIGxhIHN1cmZhY2Uu", "p2": "QWN0ZSBJSSB2aWVudCBkZSBsJ2F1dHJlIGJvdXQgZHUgbW9uZGUuIElsIGVzdCBwbGFjw6kgc291cyByw6lzZXJ2ZSA6IGMnZXN0IHZvdXMgcXVpIGTDqWNpZGVyZXosIGxlIG1vbWVudCB2ZW51LCBzJ2lsIGEgbGlldS4=", "p3": "PHN0cm9uZz5IYXplPC9zdHJvbmc+LCA0IHJ1ZSBkZSBsJ0FyYy1kZS1UcmlvbXBoZSwgUGFyaXMgMTc8c3VwPmU8L3N1cD4sIMOgIDE5aDMwLiBQb3Vzc2V6IGxhIHBvcnRlLCBtw6ptZSBzaSBlbGxlIGEgbCdhaXIgw6l0cmFuZ2UuIDxhIGNsYXNzPSJtYXBsaW5rIiBocmVmPSJodHRwczovL3d3dy5nb29nbGUuY29tL21hcHMvc2VhcmNoLz9hcGk9MSZxdWVyeT1IYXplKzQrUnVlK2RlK2wlMjdBcmMrZGUrVHJpb21waGUrNzUwMTcrUGFyaXMiIHRhcmdldD0iX2JsYW5rIiByZWw9Im5vb3BlbmVyIj5Wb2lyIGxlIHBsYW48L2E+", "p4": "TCdhdWRpZW5jZSBlc3Qgb3V2ZXJ0ZS4gU2kgdm91cyBsaXNleiBjZWNpLCB2b3VzIGRldnJpZXogZMOpasOgIMOqdHJlIGzDoC4gTGUgcmV0YXJkIGVzdCB0b2zDqXLDqSA7IGwnYWJzZW5jZSwgYmVhdWNvdXAgbW9pbnMu", "a2": "PHN0cm9uZz5OS0kgU3VzaGk8L3N0cm9uZz4sIDEyIGF2ZW51ZSBNYWMtTWFob24uIFRhYmxlIHLDqXNlcnbDqWUgw6AgMjBoNDUsIGF1IG5vbSBkdSBkZW1hbmRldXIuIERpc3RhbmNlIGRlcHVpcyBsYSBzYWxsZSBkJ2F1ZGllbmNlIDogdW5lIG1pbnV0ZSDDoCBwaWVkLiA8YSBjbGFzcz0ibWFwbGluayIgaHJlZj0iaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS9tYXBzL3NlYXJjaC8/YXBpPTEmcXVlcnk9TktJK1NVU0hJK1BhcmlzKzEyK0F2K01hYy1NYWhvbiIgdGFyZ2V0PSJfYmxhbmsiIHJlbD0ibm9vcGVuZXIiPlZvaXIgbGUgcGxhbjwvYT4="};
 const reveal = (b) => new TextDecoder().decode(Uint8Array.from(atob(b), (c) => c.charCodeAt(0)));
 
 // Réglages. Heures données en UTC : Paris = UTC+1 en novembre.
@@ -328,14 +328,14 @@ const CFG = {
   nom: "Manon Lacaze", // prénom et nom, ex. "Camille" → « Maître Camille ». Vide → « Maître »
   signature: "A.",
   faitLe: "30 octobre 2026",
-  echeance: Date.UTC(2026, 10, 2, 18, 0),  // lundi 2 novembre, 19h00
+  echeance: Date.UTC(2026, 10, 2, 18, 30), // lundi 2 novembre, 19h30
   acte2: Date.UTC(2026, 10, 2, 19, 0),     // lundi, 20h00
   verdict: Date.UTC(2026, 10, 2, 21, 0),   // lundi, 22h00
   pieces: [
     { id: "p1", no: "Pièce n° 1", titre: "Acte I", at: Date.UTC(2026, 9, 31, 11, 0) },
     { id: "p2", no: "Pièce n° 2", titre: "Acte II", at: Date.UTC(2026, 10, 1, 11, 0) },
     { id: "p3", no: "Pièce n° 3", titre: "Lieu de comparution", at: Date.UTC(2026, 10, 2, 11, 0) },
-    { id: "p4", no: "Pièce n° 4", titre: "Ouverture de l'audience", at: Date.UTC(2026, 10, 2, 18, 0) },
+    { id: "p4", no: "Pièce n° 4", titre: "Ouverture de l'audience", at: Date.UTC(2026, 10, 2, 18, 30) },
   ],
 };
 
@@ -391,7 +391,7 @@ function allowed(i) { return i === 0 || (i === 1 && S.seal) || (i >= 2 && S.acce
 function cdHTML() {
   const units = [["d", "jours"], ["h", "heures"], ["m", "minutes"], ["s", "secondes"]];
   return `<div class="cd" data-cd>
-    <span class="cd-label" data-cd-label>Échéance · lundi 2 novembre, 19h00</span>
+    <span class="cd-label" data-cd-label>Échéance · lundi 2 novembre, 19h30</span>
     <div class="cd-digits">${units.map(([u, l]) => `<div><b data-u="${u}">00</b><small>${l}</small></div>`).join("")}</div>
   </div>`;
 }
@@ -440,7 +440,7 @@ function viewConvocation() {
     </div>`;
   }
   return `<article class="paper">
-    <div class="court"><span>Chambre des premières fois</span><span>Réf. 2026/1102-1900</span></div>
+    <div class="court"><span>Chambre des premières fois</span><span>Réf. 2026/1102-1930</span></div>
     <h1>Convocation</h1>
     <p class="to">À l'attention de <strong>${esc(maitre)}</strong>, avocate fiscaliste, Paris XVII<sup>e</sup></p>
     <div class="motifs">
@@ -451,7 +451,7 @@ function viewConvocation() {
     </div>
     <p class="decide">Par ces motifs, il est décidé ce qui suit :</p>
     <ol class="articles">
-      <li><b>Article 1<sup>er</sup>.</b> Vous êtes convoquée le lundi 2 novembre 2026, à 19 heures précises.</li>
+      <li><b>Article 1<sup>er</sup>.</b> Vous êtes convoquée le lundi 2 novembre 2026, à 19 heures 30 précises.</li>
       <li><b>Article 2.</b> Aucune préparation n'est requise. Prévoyez simplement de ne rien prévoir après.</li>
       <li><b>Article 3.</b> La soirée comporte deux actes. Leur contenu est placé sous scellés et sera déclassifié selon un calendrier connu du seul demandeur.</li>
       <li><b>Article 4.</b> Toute tentative d'obtenir des informations anticipées auprès du demandeur sera rejetée. Avec le sourire.</li>
@@ -671,7 +671,7 @@ function tick(skipCheck) {
   const left = CFG.echeance - now();
   document.querySelectorAll("[data-cd]").forEach((cd) => {
     if (left <= 0) {
-      cd.innerHTML = `<span class="cd-label">Lundi 2 novembre, 19h00</span><p class="cd-open">L'audience est ouverte.</p>`;
+      cd.innerHTML = `<span class="cd-label">Lundi 2 novembre, 19h30</span><p class="cd-open">L'audience est ouverte.</p>`;
       return;
     }
     const s = Math.floor(left / 1000);
@@ -746,7 +746,7 @@ const PRESETS = [
   ["Sam. 12h", Date.UTC(2026, 9, 31, 11, 0)],
   ["Dim. 12h", Date.UTC(2026, 10, 1, 11, 0)],
   ["Lun. 12h", Date.UTC(2026, 10, 2, 11, 0)],
-  ["Lun. 19h", Date.UTC(2026, 10, 2, 18, 0)],
+  ["Lun. 19h30", Date.UTC(2026, 10, 2, 18, 30)],
   ["Lun. 20h", Date.UTC(2026, 10, 2, 19, 0)],
   ["Lun. 22h", Date.UTC(2026, 10, 2, 21, 0)],
 ];
